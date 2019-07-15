@@ -19,13 +19,13 @@ public class QuartzTestTask {
      * @param params 传入参数
      */
     public void testWithParams(String params) {
-        log.debug("[quartz task] 有参测试 -> 参数 {}", params);
+        log.info("[quartz task] 有参测试 -> 参数 {}", params);
     }
 
     /**
      * 无参测试
      */
     public void testWithNoParams() {
-        log.debug("[quartz task] 无参测试");
+        log.info("[quartz task] 无参测试");
     }
 }

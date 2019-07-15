@@ -41,10 +41,10 @@ public abstract class AbstractQuartzJob implements Job {
         try {
             before();
             doExecute(context, job);
-            after(context, job, null);
+            after(job, null);
         } catch (Exception e) {
             log.error("任务执行异常  - ：", e);
-            after(context, job, e);
+            after(job, e);
         }
     }
 
@@ -68,10 +68,9 @@ public abstract class AbstractQuartzJob implements Job {
     /**
      * 执行后
      *
-     * @param context 工作执行上下文对象
      * @param job 系统计划任务
      */
-    private void after(JobExecutionContext context, SysJob job, Exception e) {
+    private void after(SysJob job, Exception e) {
         LocalDateTime startTime = threadLocal.get();
         threadLocal.remove();
 
@@ -82,6 +81,7 @@ public abstract class AbstractQuartzJob implements Job {
         sysJobLog.setMethodParams(job.getMethodParams());
         sysJobLog.setStartTime(startTime);
         sysJobLog.setEndTime(LocalDateTime.now());
+        sysJobLog.setCreateTime(LocalDateTime.now());
         long runMs = sysJobLog.getEndTime().toInstant(ZoneOffset.of("+8")).toEpochMilli() - sysJobLog.getStartTime().toInstant(ZoneOffset.of("+8")).toEpochMilli();
         sysJobLog.setJobMessage(sysJobLog.getJobName() + " 总共耗时：" + runMs + "毫秒");
         if (e != null) {
@@ -93,7 +93,7 @@ public abstract class AbstractQuartzJob implements Job {
         }
 
         // 写入数据库当中
-        SpringUtils.getBean(SysJobLogService.class).addJobLog(sysJobLog);
+        SpringUtils.getBean(SysJobLogService.class).insert(sysJobLog);
     }
 
 }

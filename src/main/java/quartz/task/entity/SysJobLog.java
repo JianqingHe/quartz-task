@@ -74,6 +74,11 @@ public class SysJobLog implements Serializable {
     @TableField(exist = false)
     private LocalDateTime endTime;
 
+    /**
+     * 日志创建时间
+     */
+    private LocalDateTime createTime;
+
     @Override
     public String toString() {
         return new Gson().toJson(this);
