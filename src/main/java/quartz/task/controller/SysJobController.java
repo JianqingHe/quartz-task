@@ -24,7 +24,7 @@ public class SysJobController {
     private SysJobService jobService;
 
     @GetMapping("/list")
-    public ResultMap getJobList(@RequestParam Page pageInfo) {
+    public ResultMap getJobList(Page pageInfo) {
         Page<SysJob> jobPage = jobService.findByPage(pageInfo);
         return ResultMap.success(jobPage);
     }
