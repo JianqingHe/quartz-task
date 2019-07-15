@@ -19,7 +19,7 @@ public class JobInvokeUtil {
      * @param sysJob 系统任务
      */
     public static void invokeMethod(SysJob sysJob) throws Exception {
-        Object bean = SpringUtils.getBean(sysJob.getJobName());
+        Object bean = SpringUtils.getBean(sysJob.getBeanName());
         String methodName = sysJob.getMethodName();
         String methodParams = sysJob.getMethodParams();
 

@@ -2,6 +2,7 @@ package quartz.task.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
+import org.quartz.SchedulerException;
 import quartz.task.entity.SysJob;
 
 /**
@@ -19,4 +20,12 @@ public interface SysJobService extends IService<SysJob> {
      * @return 查询结果
      */
     Page<SysJob> findByPage(Page pageInfo);
+
+    /**
+     * 通过任务id立即执行一次任务
+     *
+     * @param jobId 任务id
+     * @throws SchedulerException 任务执行异常
+     */
+    void run(Long jobId) throws SchedulerException;
 }

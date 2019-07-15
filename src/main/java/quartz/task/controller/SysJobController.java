@@ -1,11 +1,9 @@
 package quartz.task.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import quartz.task.entity.SysJob;
 import quartz.task.result.ResultMap;
 import quartz.task.service.SysJobService;
@@ -23,14 +21,27 @@ public class SysJobController {
     @Autowired
     private SysJobService jobService;
 
+    /**
+     * 获取任务列表
+     *
+     * @param pageInfo 分页参数
+     * @return 查询结果
+     */
     @GetMapping("/list")
     public ResultMap getJobList(Page pageInfo) {
         Page<SysJob> jobPage = jobService.findByPage(pageInfo);
         return ResultMap.success(jobPage);
     }
 
-    @GetMapping("/hello")
-    public ResultMap hello() {
-        return ResultMap.success("hello");
+    /**
+     * 立即执行任务
+     *
+     * @param jobId 任务id
+     * @return 执行结果
+     */
+    @PostMapping("/run/{jobId}")
+    public ResultMap runJob(@PathVariable("jobId") Long jobId) throws SchedulerException {
+        jobService.run(jobId);
+        return ResultMap.success();
     }
 }
