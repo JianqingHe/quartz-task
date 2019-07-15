@@ -70,6 +70,45 @@ public class ResultMap<T> implements Serializable {
     }
 
     /**
+     * 失败
+     *
+     * @return 失败
+     */
+    public static ResultMap error() {
+        return ResultMap.error("系统运行出错", FAIL);
+    }
+
+    /**
+     * 失败
+     *
+     * @return 失败
+     */
+    public static ResultMap error(String msg, int code) {
+        ResultMap resultMap = new ResultMap();
+        resultMap.setCode(code);
+        resultMap.setMsg(msg);
+        return new ResultMap();
+    }
+
+    /**
+     * 失败
+     *
+     * @return 失败
+     */
+    public static ResultMap error(Throwable e) {
+        return ResultMap.error(e.getMessage());
+    }
+
+    /**
+     * 失败
+     *
+     * @return 失败
+     */
+    public static ResultMap error(String msg) {
+        return ResultMap.error(msg, FAIL);
+    }
+
+    /**
      * 成功
      *
      * @return 成功
