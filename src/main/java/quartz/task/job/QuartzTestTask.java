@@ -3,6 +3,8 @@ package quartz.task.job;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 /**
  * quartz任务测试
  *
@@ -19,13 +21,13 @@ public class QuartzTestTask {
      * @param params 传入参数
      */
     public void testWithParams(String params) {
-        log.info("[quartz task] 有参测试 -> 参数 {}", params);
+        log.info("[quartz task] 有参测试 -> 参数 {} time {}", params, LocalDateTime.now());
     }
 
     /**
      * 无参测试
      */
     public void testWithNoParams() {
-        log.info("[quartz task] 无参测试");
+        log.info("[quartz task] 无参测试 time {}", LocalDateTime.now());
     }
 }
