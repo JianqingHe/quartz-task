@@ -75,3 +75,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true # 设置启用数据库字段下划线映射到java对象的驼峰式命名属性，默认为false
     cache-enabled: false
     call-setters-on-nulls: true
+
+
+server:
+  port: 8088
