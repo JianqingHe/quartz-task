@@ -2,7 +2,8 @@
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.jdbc.Driver
+    # 数据库为mysql8+,配置com.mysql.jdbc.Driver会报数据库连接异常
+    driverClassName: com.mysql.cj.jdbc.Driver
     druid:
       url: jdbc:mysql://localhost:3306/quartz?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
       username: root
