@@ -42,6 +42,6 @@ public class SysJobController {
     @PostMapping("/run/{jobId}")
     public ResultMap runJob(@PathVariable("jobId") Long jobId) throws SchedulerException {
         jobService.run(jobId);
-        return ResultMap.success();
+        return ResultMap.success("任务执行成功");
     }
 }

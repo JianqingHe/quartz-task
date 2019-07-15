@@ -26,6 +26,7 @@ import java.util.List;
 @Service("SysJobService")
 public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> implements SysJobService {
 
+    @Qualifier("schedulerFactoryBean")
     @Autowired
     private Scheduler scheduler;
 
