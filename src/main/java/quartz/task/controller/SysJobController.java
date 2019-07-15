@@ -16,8 +16,8 @@ import quartz.task.service.SysJobService;
  * @author hejq
  * @date 2019/7/15 9:21
  */
-@RequestMapping
-@RestController("/sysJob")
+@RequestMapping("/sysJob")
+@RestController
 public class SysJobController {
 
     @Autowired
@@ -27,5 +27,10 @@ public class SysJobController {
     public ResultMap getJobList(@RequestParam Page pageInfo) {
         Page<SysJob> jobPage = jobService.findByPage(pageInfo);
         return ResultMap.success(jobPage);
+    }
+
+    @GetMapping("/hello")
+    public ResultMap hello() {
+        return ResultMap.success("hello");
     }
 }

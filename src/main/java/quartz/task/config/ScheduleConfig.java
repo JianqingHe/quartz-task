@@ -1,7 +1,7 @@
 package quartz.task.config;
 
-import org.quartz.SchedulerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import javax.sql.DataSource;
@@ -13,6 +13,7 @@ import java.util.Properties;
  * @author hejq
  * @date 2019/7/12 9:27
  */
+@Configuration
 public class ScheduleConfig {
 
     @Bean

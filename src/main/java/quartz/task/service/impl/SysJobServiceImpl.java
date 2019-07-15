@@ -13,7 +13,7 @@ import quartz.task.service.SysJobService;
  * @author hejq
  * @date 2019/7/12 16:55
  */
-@Service("SysLogService")
+@Service("SysJobService")
 public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> implements SysJobService {
 
     /**
