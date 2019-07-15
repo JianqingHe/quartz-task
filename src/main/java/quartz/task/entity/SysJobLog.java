@@ -1,5 +1,6 @@
 package quartz.task.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.google.gson.Gson;
@@ -64,11 +65,13 @@ public class SysJobLog implements Serializable {
     /**
      * 开始时间
      */
+    @TableField(exist = false)
     private LocalDateTime startTime;
 
     /**
      * 结束时间
      */
+    @TableField(exist = false)
     private LocalDateTime endTime;
 
     @Override

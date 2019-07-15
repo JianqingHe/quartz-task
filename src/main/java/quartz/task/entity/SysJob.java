@@ -48,7 +48,7 @@ public class SysJob implements Serializable {
     /**
      * corn表达式
      */
-    private String cornExpression;
+    private String cronExpression;
 
     /**
      * 任务状态（0正常 1暂停）
