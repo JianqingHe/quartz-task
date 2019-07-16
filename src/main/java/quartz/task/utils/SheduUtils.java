@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import quartz.task.constant.ScheduleConstants;
 import quartz.task.entity.SysJob;
+import quartz.task.enums.Status;
 import quartz.task.excepiton.TaskException;
 
 /**
@@ -54,8 +55,7 @@ public class SheduUtils {
     /**
      * 创建定时任务
      */
-    public static void createScheduleJob(Scheduler scheduler, SysJob job) throws SchedulerException, TaskException
-    {
+    public static void createScheduleJob(Scheduler scheduler, SysJob job) throws SchedulerException, TaskException {
         Class<? extends Job> jobClass = getQuartzJobClass(job);
         // 构建job信息
         JobDetail jobDetail = JobBuilder.newJob(jobClass).withIdentity(getJobKey(job.getJobId())).build();
@@ -73,7 +73,7 @@ public class SheduUtils {
         scheduler.scheduleJob(jobDetail, trigger);
 
         // 暂停任务
-        if (job.getStatus().equals(ScheduleConstants.Status.PAUSE.getValue())) {
+        if (job.getStatus().equals(Status.PAUSE.getValue())) {
             pauseJob(scheduler, job.getJobId());
         }
     }

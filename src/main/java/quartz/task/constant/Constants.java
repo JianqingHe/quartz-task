@@ -2,11 +2,11 @@ package quartz.task.constant;
 
 /**
  * 通用常量信息
- * 
- * @author ruoyi
+ *
+ * @author hejq
+ * @date 2019/7/16 9:38
  */
-public class Constants
-{
+public class Constants {
     /**
      * UTF-8 字符集
      */

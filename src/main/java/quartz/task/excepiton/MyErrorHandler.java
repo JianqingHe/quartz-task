@@ -17,11 +17,7 @@ import java.util.Date;
  * 自定义请求异常
  *
  * @author hejq
- * @version V1.0
- * @project machine-cloud
- * @package com.northmeter.base.common.error
- * @date 2019/4/19 9:48
- * @modified
+ * @date 2019/7/16 9:30
  */
 public class MyErrorHandler implements ResponseErrorHandler {
 

@@ -223,9 +223,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         // 前置字符是否大写
         boolean preCharIsUpperCase;
         // 当前字符是否大写
-        boolean curreCharIsUpperCase;
+        boolean currCharIsUpperCase;
         // 下一字符是否大写
-        boolean nexteCharIsUpperCase = true;
+        boolean nextCharIsUpperCase = true;
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if (i > 0) {
@@ -234,15 +234,15 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
                 preCharIsUpperCase = false;
             }
 
-            curreCharIsUpperCase = Character.isUpperCase(c);
+            currCharIsUpperCase = Character.isUpperCase(c);
 
             if (i < (str.length() - 1)) {
-                nexteCharIsUpperCase = Character.isUpperCase(str.charAt(i + 1));
+                nextCharIsUpperCase = Character.isUpperCase(str.charAt(i + 1));
             }
 
-            if (preCharIsUpperCase && curreCharIsUpperCase && !nexteCharIsUpperCase) {
+            if (preCharIsUpperCase && currCharIsUpperCase && !nextCharIsUpperCase) {
                 sb.append(SEPARATOR);
-            } else if (i != 0 && !preCharIsUpperCase && curreCharIsUpperCase) {
+            } else if (i != 0 && !preCharIsUpperCase && currCharIsUpperCase) {
                 sb.append(SEPARATOR);
             }
             sb.append(Character.toLowerCase(c));

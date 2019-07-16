@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import quartz.task.entity.SysJob;
 
 /**
+ * 系统任务mapper
+ *
  * @author hejq
  * @date 2019/7/12 16:53
  */
